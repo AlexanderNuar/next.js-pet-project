@@ -28,24 +28,24 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
       <AlertDialog.Root>
         <AlertDialog.Trigger>
           <Button color="red" disabled={isDeleting}>
-            Delete Issue
+            Удалить Задачу
             {isDeleting && <Spinner />}
           </Button>
         </AlertDialog.Trigger>
         <AlertDialog.Content>
-          <AlertDialog.Title>Confirm Deletion</AlertDialog.Title>
+          <AlertDialog.Title>Подтвердите Удаление</AlertDialog.Title>
           <AlertDialog.Description>
-            Are you sure? This action cannot be undone
+            Вы уверены? Это действие не возможно отменить.
           </AlertDialog.Description>
           <Flex mt="4" gap="3">
             <AlertDialog.Cancel>
               <Button variant="soft" color="gray">
-                Cancel
+                Отмена
               </Button>
             </AlertDialog.Cancel>
             <AlertDialog.Action>
               <Button color="red" onClick={deleteIssue}>
-                Delete Issue
+                Удалить Задачу
               </Button>
             </AlertDialog.Action>
           </Flex>

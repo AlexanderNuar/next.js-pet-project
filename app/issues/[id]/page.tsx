@@ -8,12 +8,14 @@ import { getServerSession } from 'next-auth'
 import authOptions from '@/app/auth/authOptions'
 import AssigneeSelect from './AssigneeSelect'
 import { cache } from 'react'
+import CloseIssueButton from './CloseIssueButton'
+import InProgressIssueButton from './InProgressIssueButton'
 
 interface Props {
   params: { id: string }
 }
 
-const fetchUser = cache((issueId: number) =>
+const fetch = cache((issueId: number) =>
   prisma.issue.findUnique({
     where: { id: issueId },
   })
@@ -24,7 +26,7 @@ const IssueDetailPage = async ({ params }: Props) => {
 
   if (isNaN(parseInt(params.id))) notFound()
 
-  const issue = await fetchUser(parseInt(params.id))
+  const issue = await fetch(parseInt(params.id))
 
   if (!issue) notFound()
 
@@ -38,6 +40,12 @@ const IssueDetailPage = async ({ params }: Props) => {
           <Flex direction="column" gap="4">
             <AssigneeSelect issue={issue} />
             <EditIssueButton issueId={issue.id} />
+            {issue.status !== 'CLOSED' && (
+              <CloseIssueButton issueId={issue.id} />
+            )}
+            {issue.status === 'OPEN' && (
+              <InProgressIssueButton issueId={issue.id} />
+            )}
             <DeleteIssueButton issueId={issue.id} />
           </Flex>
         </Box>
@@ -46,7 +54,7 @@ const IssueDetailPage = async ({ params }: Props) => {
   )
 }
 export async function generateMetadata({ params }: Props) {
-  const issue = await fetchUser(parseInt(params.id))
+  const issue = await fetch(parseInt(params.id))
 
   return {
     title: issue?.title,

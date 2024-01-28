@@ -52,7 +52,7 @@ const IssueTable = ({ issues, searchParams }: IssueTableProps) => {
               <IssueStatusBadge status={issue.status} />
             </Table.Cell>
             <Table.Cell className="hidden md:table-cell">
-              {issue.createdAt.toDateString()}
+              {issue.createdAt.toLocaleString().split(',')[0]}
             </Table.Cell>
           </Table.Row>
         ))}

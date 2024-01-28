@@ -1,10 +1,9 @@
+import prisma from '@/prisma/client'
 import { Flex, Grid } from '@radix-ui/themes'
+import { Metadata } from 'next'
 import IssueChart from './IssueChart'
 import IssueSummary from './IssueSummary'
 import LatestIssues from './LatestIssues'
-import Pagination from './components/Pagination'
-import prisma from '@/prisma/client'
-import { Metadata } from 'next'
 
 export default async function Home() {
   const open = await prisma.issue.count({
@@ -29,6 +28,6 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  title: 'Issue Tracker - Dashboard',
-  description: 'View a summary of project issues',
+  title: 'Трекер Задач',
+  description: 'Сводка задач проекта',
 }

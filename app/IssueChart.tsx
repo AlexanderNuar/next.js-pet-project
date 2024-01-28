@@ -11,9 +11,9 @@ interface IssueChartProps {
 
 const IssueChart = ({ open, inProgress, closed }: IssueChartProps) => {
   const data = [
-    { label: 'Open', value: open },
-    { label: 'In Progress', value: inProgress },
-    { label: 'Closed', value: closed },
+    { label: 'Открытые', value: open },
+    { label: 'В работе', value: inProgress },
+    { label: 'Закрытые', value: closed },
   ]
 
   return (

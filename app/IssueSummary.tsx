@@ -17,9 +17,9 @@ interface IssueSummaryProps {
 
 const IssueSummary = ({ open, closed, inProgress }: IssueSummaryProps) => {
   const containers: Statuses = [
-    { label: 'Open Issues', value: open, status: 'OPEN' },
-    { label: 'In-progress', value: inProgress, status: 'IN_PROGRESS' },
-    { label: 'Closed', value: closed, status: 'CLOSED' },
+    { label: 'Открытые', value: open, status: 'OPEN' },
+    { label: 'В работе', value: inProgress, status: 'IN_PROGRESS' },
+    { label: 'Закрытые', value: closed, status: 'CLOSED' },
   ]
 
   return (

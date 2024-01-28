@@ -51,8 +51,8 @@ const IssuesPage = async ({ searchParams }: IssuesPageProps) => {
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'Issue List',
-  description: 'View all project issues',
+  title: 'Список Задач',
+  description: 'Увидеть все задачи на проекте',
 }
 
 export default IssuesPage

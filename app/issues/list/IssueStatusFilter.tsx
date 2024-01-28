@@ -4,10 +4,10 @@ import { Select } from '@radix-ui/themes'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 const statuses: { label: string; value?: Status }[] = [
-  { label: 'All' },
-  { label: 'Open', value: 'OPEN' },
-  { label: 'In progress', value: 'IN_PROGRESS' },
-  { label: 'Closed', value: 'CLOSED' },
+  { label: 'Все' },
+  { label: 'Открытые', value: 'OPEN' },
+  { label: 'В работе', value: 'IN_PROGRESS' },
+  { label: 'Закрытые', value: 'CLOSED' },
 ]
 
 const IssueStatusFilter = () => {

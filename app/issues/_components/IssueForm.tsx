@@ -44,7 +44,7 @@ const IssueForm = ({ issue }: Props) => {
       router.refresh()
     } catch (error) {
       setIsSubmitting(false)
-      setError('An unexpected error occurred.')
+      setError('Произошла непредвиденная ошибка.')
     }
   })
 
@@ -59,7 +59,7 @@ const IssueForm = ({ issue }: Props) => {
         <TextField.Root>
           <TextField.Input
             defaultValue={issue?.title}
-            placeholder="Tittle"
+            placeholder="Заголовок"
             {...register('title')}
           />
         </TextField.Root>
@@ -69,14 +69,14 @@ const IssueForm = ({ issue }: Props) => {
           control={control}
           defaultValue={issue?.description}
           render={({ field }) => (
-            <SimpleMDE placeholder="Description" {...field} />
+            <SimpleMDE placeholder="Описание" {...field} />
           )}
         />
 
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
 
         <Button disabled={isSubmitting}>
-          {issue ? 'Update Issue' : 'Submit New Issue '}{' '}
+          {issue ? 'Обновить Задачу' : 'Отправить Новую Задачу'}{' '}
           {isSubmitting && <Spinner />}
         </Button>
       </form>

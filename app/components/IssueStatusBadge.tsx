@@ -10,15 +10,15 @@ const statusMap: Record<
   { label: string; color: 'red' | 'violet' | 'green' }
 > = {
   OPEN: {
-    label: 'Open',
+    label: 'Открыта',
     color: 'red',
   },
   IN_PROGRESS: {
-    label: 'In Progress',
+    label: 'В работе',
     color: 'violet',
   },
   CLOSED: {
-    label: 'Closed',
+    label: 'Закрыта',
     color: 'green',
   },
 }

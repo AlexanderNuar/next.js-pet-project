@@ -69,3 +69,55 @@ export async function DELETE(
 
   return NextResponse.json({})
 }
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  // await delay(2000)
+
+  const session = await getServerSession(authOptions)
+
+  if (!session) return NextResponse.json({}, { status: 401 })
+
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  })
+
+  if (!issue)
+    return NextResponse.json({ error: 'Invalid issue' }, { status: 404 })
+
+  await prisma.issue.update({
+    where: { id: issue.id },
+    data: {
+      status: 'CLOSED',
+    },
+  })
+
+  return NextResponse.json({})
+}
+export async function HEAD(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  // await delay(2000)
+
+  const session = await getServerSession(authOptions)
+
+  if (!session) return NextResponse.json({}, { status: 401 })
+
+  const issue = await prisma.issue.findUnique({
+    where: { id: parseInt(params.id) },
+  })
+
+  if (!issue)
+    return NextResponse.json({ error: 'Invalid issue' }, { status: 404 })
+
+  await prisma.issue.update({
+    where: { id: issue.id },
+    data: {
+      status: 'IN_PROGRESS',
+    },
+  })
+
+  return NextResponse.json({})
+}
